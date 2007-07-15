@@ -1,4 +1,4 @@
-%define snap r373828
+%define snap r556433
 
 #Module-Specific definitions
 %define mod_name mod_mbox
@@ -8,12 +8,12 @@
 Summary: 	Mod_mbox is a mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
-Release: 	%mkrel 1.%{snap}.3
+Release: 	%mkrel 1.%{snap}.1
 License: 	Apache License
 Group: 		System/Servers
 URL: 		http://httpd.apache.org/mod_mbox/
 Source0:	%{mod_name}-%{version}-%{snap}.tar.bz2
-Source1:	%{mod_conf}.bz2
+Source1:	%{mod_conf}
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
 Requires(pre):	apache-conf >= 2.2.0
@@ -36,6 +36,8 @@ mod_mbox is a mailing list archive browser. Functionality includes:
 %prep
 
 %setup -q -n %{mod_name}
+
+cp %{SOURCE1} %{mod_conf}
 
 for i in `find . -type d -name .svn`; do
     if [ -e "$i" ]; then rm -rf $i; fi >&/dev/null
@@ -65,10 +67,8 @@ libtoolize --copy --force; aclocal-1.7 -I m4; automake-1.7 --add-missing --copy 
 mv %{buildroot}%{_libdir}/apache %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 
-bzcat %{SOURCE1} > %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
+install -m0644 %{mod_conf} %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
 
-install -d %{buildroot}%{_var}/www/html/addon-modules
-ln -s ../../../..%{_docdir}/%{name}-%{version} %{buildroot}%{_var}/www/html/addon-modules/%{name}-%{version}
 
 %post
 if [ -f %{_var}/lock/subsys/httpd ]; then
@@ -91,6 +91,3 @@ fi
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/mod_*.so
 %attr(0755,root,root) %{_bindir}/mod-mbox-util
-%{_var}/www/html/addon-modules/*
-
-
