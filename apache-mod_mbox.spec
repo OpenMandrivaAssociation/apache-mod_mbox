@@ -8,7 +8,7 @@
 Summary: 	Mod_mbox is a mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
-Release: 	%mkrel 1.%{snap}.1
+Release: 	%mkrel 1.%{snap}.2
 License: 	Apache License
 Group: 		System/Servers
 URL: 		http://httpd.apache.org/mod_mbox/
