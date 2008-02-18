@@ -5,7 +5,7 @@
 %define mod_conf A50_%{mod_name}.conf
 %define mod_so %{mod_name}.so
 
-Summary: 	Mod_mbox is a mailing list archive browser
+Summary: 	Mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
 Release: 	%mkrel 1.%{snap}.3
