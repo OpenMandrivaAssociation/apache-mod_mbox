@@ -54,7 +54,7 @@ rm -rf autom4te.cache
 touch module-2.0/config.in config.in
 libtoolize --copy --force; aclocal-1.7 -I m4; automake-1.7 --add-missing --copy --foreign; autoconf --force
 
-%configure2_5x \
+%configure2_5x --localstatedir=/var/lib \
     --with-apxs=%{_sbindir}/apxs
 
 %make
