@@ -24,7 +24,7 @@ BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
-BuildRoot: 	%{_tmppath}/%{name}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_mbox is a mailing list archive browser. Functionality includes:
