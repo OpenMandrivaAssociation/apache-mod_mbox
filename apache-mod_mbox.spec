@@ -1,4 +1,4 @@
-%define snap r556433
+%define snap r670198
 
 #Module-Specific definitions
 %define mod_name mod_mbox
@@ -8,11 +8,11 @@
 Summary: 	Mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
-Release: 	%mkrel 1.%{snap}.5
+Release: 	%mkrel 1.%{snap}.1
 License: 	Apache License
 Group: 		System/Servers
 URL: 		http://httpd.apache.org/mod_mbox/
-Source0:	%{mod_name}-%{version}-%{snap}.tar.bz2
+Source0:	%{mod_name}-%{version}-%{snap}.tar.gz
 Source1:	%{mod_conf}
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -60,7 +60,7 @@ libtoolize --copy --force; aclocal-1.7 -I m4; automake-1.7 --add-missing --copy 
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
@@ -68,7 +68,6 @@ mv %{buildroot}%{_libdir}/apache %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 
 install -m0644 %{mod_conf} %{buildroot}%{_sysconfdir}/httpd/modules.d/%{mod_conf}
-
 
 %post
 if [ -f %{_var}/lock/subsys/httpd ]; then
@@ -83,7 +82,7 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
