@@ -8,7 +8,7 @@
 Summary: 	Mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
-Release: 	%mkrel 1.%{snap}.6
+Release: 	%mkrel 1.%{snap}.7
 License: 	Apache License
 Group: 		System/Servers
 URL: 		http://httpd.apache.org/mod_mbox/
