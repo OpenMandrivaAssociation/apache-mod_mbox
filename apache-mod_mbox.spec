@@ -8,7 +8,7 @@
 Summary: 	Mailing list archive browser
 Name: 		apache-%{mod_name}
 Version: 	0.2
-Release: 	%mkrel 1.%{snap}.7
+Release: 	%mkrel 1.%{snap}.8
 License: 	Apache License
 Group: 		System/Servers
 URL: 		http://httpd.apache.org/mod_mbox/
@@ -22,7 +22,7 @@ Requires:	apache-conf >= 2.2.0
 Requires:	apache >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	autoconf2.5
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -52,7 +52,7 @@ export WANT_AUTOCONF_2_5=1
 rm -f configure
 rm -rf autom4te.cache
 touch module-2.0/config.in config.in
-libtoolize --copy --force; aclocal-1.7 -I m4; automake-1.7 --add-missing --copy --foreign; autoconf --force
+libtoolize --copy --force; aclocal -I m4; automake --add-missing --copy --foreign; autoconf --force
 
 %configure2_5x --localstatedir=/var/lib \
     --with-apxs=%{_sbindir}/apxs
