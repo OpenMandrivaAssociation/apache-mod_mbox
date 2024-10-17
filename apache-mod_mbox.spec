@@ -11,7 +11,7 @@ Version: 	0.2
 Release: 	%mkrel 1.%{snap}.10
 License: 	Apache License
 Group: 		System/Servers
-URL: 		http://httpd.apache.org/mod_mbox/
+URL: 		https://httpd.apache.org/mod_mbox/
 Source0:	%{mod_name}-%{version}-%{snap}.tar.gz
 Source1:	%{mod_conf}
 Requires(pre): rpm-helper
